@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package beef;
+
+option go_package = "lucky-patty/7solution/challenge3/beefpb";
+
+import "third_party/google/api/annotations.proto";
+
+
+service BeefService {
+ // rpc GetBeefSummary (BeefRequest) returns (BeefSummaryResponse);
+  rpc GetSummary (Empty) returns (BeefSummary) {
+    option (google.api.http) = {
+      get: "/beef/summary"
+    };
+  }
+}
+
+message Empty {}
+
+message BeefSummary{
+  map<string, int32> beef = 1;
+}
+
